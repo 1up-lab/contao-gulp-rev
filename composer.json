@@ -1,0 +1,48 @@
+
+{
+  "name":"oneup/contao-gulp-rev",
+  "description":"This Contao Open Source CMS extension gives you the ability to integrate your css and js assets with gulp-rev.",
+  "keywords":["contao", "gulp", "gulp-rev", "assets", "css", "javascript"],
+  "type":"contao-module",
+  "homepage":"http://1up.io",
+  "license":"MIT",
+  "authors":[
+    {
+      "name":"David Greminger",
+      "email":"dg@1up.io",
+      "homepage":"http://1up.io",
+      "role":"Developer"
+    },
+    {
+      "name":"Stephan Beeler",
+      "email":"sb@1up.io",
+      "homepage":"http://1up.io",
+      "role":"Developer"
+    }
+  ],
+  "support":{
+    "email":"hello@1up.io",
+    "issues":"https://github.com/1up-lab/contao-gulp-rev/issues",
+    "irc":"irc://irc.freenode.org/contao.dev",
+    "source":"https://github.com/1up-lab/contao-gulp-rev"
+  },
+  "require":{
+    "php":"^5.4|^7.0",
+    "contao/core":">=3.2,<4.0-dev",
+    "contao-community-alliance/composer-plugin": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Oneup\\Contao\\": "src"
+    }
+  },
+  "extra": {
+    "contao": {
+      "sources": {
+        "contao": "system/modules/gulp-rev"
+      }
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
