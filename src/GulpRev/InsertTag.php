@@ -19,7 +19,7 @@ class InsertTag extends Frontend
     {
         $arrSplit = explode('::', $strTag);
 
-        if ($arrSplit[0] != 'asset' && $arrSplit[0] != 'cache_asset') {
+        if ('asset' != $arrSplit[0] && 'cache_asset' != $arrSplit[0]) {
             return false;
         }
 
@@ -32,7 +32,7 @@ class InsertTag extends Frontend
 
     private function getAssetVersion($extension)
     {
-        if ($GLOBALS['TL_CONFIG']['env'] === 'dev') {
+        if ('dev' === $GLOBALS['TL_CONFIG']['env']) {
             return 'build.'.$extension;
         }
 
@@ -40,10 +40,10 @@ class InsertTag extends Frontend
             throw new \Exception(sprintf('Cannot find manifest file: "%s"', $this->manifestPath));
         }
         $this->filePaths = json_decode(file_get_contents($this->manifestPath), true);
-        if (!isset($this->filePaths['build.min.'.$extension])) {
-            throw new \Exception(sprintf('There is no file "%s" in the version manifest!', 'build.min.'.$extension));
-        }
 
-        return $this->filePaths['build.min.'.$extension];
+        if (!isset($this->filePaths['build.'.$extension])) {
+            throw new \Exception(sprintf('There is no file "%s" in the version manifest!', 'build.'.$extension));
+        }
+        return $this->filePaths['build.'.$extension];
     }
 }
