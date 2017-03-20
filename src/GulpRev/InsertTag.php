@@ -41,16 +41,9 @@ class InsertTag extends Frontend
         }
         $this->filePaths = json_decode(file_get_contents($this->manifestPath), true);
 
-        if ('test' === $GLOBALS['TL_CONFIG']['env']) {
-            if (!isset($this->filePaths['build.'.$extension])) {
-                throw new \Exception(sprintf('There is no file "%s" in the version manifest!', 'build.'.$extension));
-            }
-            return $this->filePaths['build.'.$extension];
-        } else {
-            if (!isset($this->filePaths['build.min.'.$extension])) {
-                throw new \Exception(sprintf('There is no file "%s" in the version manifest!', 'build.min.'.$extension));
-            }
-            return $this->filePaths['build.min.'.$extension];
+        if (!isset($this->filePaths['build.'.$extension])) {
+            throw new \Exception(sprintf('There is no file "%s" in the version manifest!', 'build.'.$extension));
         }
+        return $this->filePaths['build.'.$extension];
     }
 }
