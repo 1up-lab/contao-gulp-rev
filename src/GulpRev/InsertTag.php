@@ -39,11 +39,13 @@ class InsertTag extends Frontend
         if (!file_exists($this->manifestPath)) {
             throw new \Exception(sprintf('Cannot find manifest file: "%s"', $this->manifestPath));
         }
+
         $this->filePaths = json_decode(file_get_contents($this->manifestPath), true);
 
         if (!isset($this->filePaths['build.'.$extension])) {
             throw new \Exception(sprintf('There is no file "%s" in the version manifest!', 'build.'.$extension));
         }
+
         return $this->filePaths['build.'.$extension];
     }
 }
